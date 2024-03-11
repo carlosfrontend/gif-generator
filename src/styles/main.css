@@ -71,6 +71,7 @@ input#search{
     outline: 5px solid #e3cf49;
     border-left-style: groove;
     cursor: pointer;
+    background-color: #ffffff;
 }
 #img-container{
     width: 100%;
