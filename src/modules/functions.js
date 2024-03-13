@@ -11,7 +11,7 @@ export const showError = (span, error) => {
   spanError.textContent = error;
 };
 
-export const setGif = (img, response) => {
+export const showGif = (img, response) => {
   const imgTag = img;
   imgTag.src = response.data.images.original.url;
 };

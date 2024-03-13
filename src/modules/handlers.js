@@ -1,7 +1,7 @@
 import {
   handleApiKeyError,
   showError,
-  setGif,
+  showGif,
   handleGifNotFound,
   clearError,
   clearInputValue,
@@ -20,7 +20,7 @@ export const getRandomGif = async () => {
     handleApiKeyError(response);
     clearError(spanError);
     const gifData = await response.json();
-    setGif(img, gifData);
+    showGif(img, gifData);
   } catch (error) {
     img.src = defaultImg;
     showError(spanError, error);
@@ -41,7 +41,7 @@ export const searchGif = async () => {
     clearError(spanError);
     const gifData = await response.json();
     handleGifNotFound(gifData);
-    setGif(img, gifData);
+    showGif(img, gifData);
     clearError(spanError);
     clearInputValue();
   } catch (error) {
