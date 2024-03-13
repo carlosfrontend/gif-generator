@@ -19,16 +19,15 @@ export const getRandomGif = async () => {
     const response = await fetch(URI, { mode: 'cors' });
     handleApiKeyError(response);
     clearError(spanError);
-    response.json().then((res) => {
-      setGif(img, res);
-    });
+    const gifData = await response.json();
+    setGif(img, gifData);
   } catch (error) {
+    img.src = defaultImg;
     showError(spanError, error);
   }
 };
 
-export const searchGif = async (event) => {
-  const myEvent = event;
+export const searchGif = async () => {
   try {
     const searchInput = document.querySelector('#search');
     const searchInputValue = searchInput.value;
@@ -40,18 +39,14 @@ export const searchGif = async (event) => {
     const response = await fetch(URI_SEARCH, { mode: 'cors' });
     handleApiKeyError(response);
     clearError(spanError);
-    response.json().then((res) => {
-      try {
-        handleGifNotFound(res);
-        setGif(img, res);
-        clearError(spanError);
-        clearInputValue(myEvent);
-      } catch (error) {
-        showError(spanError, error);
-        clearInputValue(myEvent);
-      }
-    });
+    const gifData = await response.json();
+    handleGifNotFound(gifData);
+    setGif(img, gifData);
+    clearError(spanError);
+    clearInputValue();
   } catch (error) {
+    img.src = defaultImg;
     showError(spanError, error);
+    clearInputValue();
   }
 };

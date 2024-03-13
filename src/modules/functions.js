@@ -29,7 +29,6 @@ export const clearError = (span) => {
   spanError.textContent = '';
 };
 
-export const clearInputValue = (event) => {
-  const myEvent = event;
-  myEvent.target.parentElement.parentElement.children[0].value = '';
+export const clearInputValue = () => {
+  document.querySelector('#search').value = '';
 };
