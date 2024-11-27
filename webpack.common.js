@@ -7,7 +7,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Gif Generator',
-      favicon: '',
+      favicon: './favicon.svg',
       filename: 'index.html',
       template: path.resolve(__dirname, 'src', 'index.html'),
       inject: true,
